@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <button>1</button>
+    <button id="b2">More info</button>
+    <button>3</button>
+
+    <div id='tooltip' role='tooltip' style="margin-top:10px;padding:20px;width: fit-content;height: fit-content;
+    background-color:#333;color:#fff;display:none">
+        This is the additional information supplied!
+    </div>
+
+    <script>
+        const b2 = document.querySelector('#b2')
+        const tooltip = document.querySelector('#tooltip')
+
+        b2.addEventListener('focus', ()=>{
+            console.log('Button focused!')
+            toggleOnFocus()
+        })
+        b2.addEventListener('blur', ()=>{
+            console.log('Button blured!')
+            toggleOnBlur()
+        })
+
+        const toggleOnFocus = ()=>{
+            tooltip.style.display='block'    
+            b2.setAttribute('aria-describedby','tooltip')
+        }
+        const toggleOnBlur = ()=>{
+            tooltip.style.display='none'    
+            b2.removeAttribute('aria-describedby')
+}
+
+
+    </script>
+</body>
+</html>
